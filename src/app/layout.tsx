@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Russo_One, Open_Sans } from "next/font/google";
 import "./styles/globals.css";
+import Header from "@/components/shared/header";
 
 const russoOne = Russo_One({
   weight: "400",
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${russoOne.variable} ${openSans.variable} antialiased`}>
+      <body
+        className={`${russoOne.variable} ${openSans.variable} antialiased flex flex-col min-h-screen max-w-[70rem] mx-auto`}
+      >
+        <Header />
         {children}
       </body>
     </html>
