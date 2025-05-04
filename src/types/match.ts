@@ -1,13 +1,15 @@
 export interface Team {
   id: number;
   name: string;
-  logo_url?: string;
+  logo?: string;
+  competitions?: Competition[];
+  matches?: Match[];
 }
 
 export interface Competition {
   id: number;
   name: string;
-  logo_url?: string;
+  logo?: string;
   teams: Team[];
   start_date: string;
   end_date: string;

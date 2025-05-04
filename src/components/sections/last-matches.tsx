@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Carousel,
   CarouselContent,
@@ -5,11 +7,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
-
-import competition from "@/assets/esl-challenger.jpg";
+import Game from "../shared/game";
+import { useTeamStore } from "@/stores/team-store";
 
 export default function LastMatches() {
+  const { team } = useTeamStore();
+
   return (
     <div className="flex flex-col gap-8 my-30">
       <div>
@@ -17,60 +20,13 @@ export default function LastMatches() {
       </div>
       <Carousel className="mx-14">
         <CarouselContent className="items-stretch min-h-[300px]">
-          <CarouselItem className="basis-1/3">
-            <div className="relative w-full h-[300px]">
-              <Image
-                src={competition}
-                alt="Foto do campeonato"
-                fill
-                className="object-cover rounded"
-              />
-            </div>
-          </CarouselItem>
-
-          <CarouselItem className="basis-1/3">
-            <div className="relative w-full h-[300px]">
-              <Image
-                src={competition}
-                alt="Foto do campeonato"
-                fill
-                className="object-cover rounded"
-              />
-            </div>
-          </CarouselItem>
-
-          <CarouselItem className="basis-1/3">
-            <div className="relative w-full h-[300px]">
-              <Image
-                src={competition}
-                alt="Foto do campeonato"
-                fill
-                className="object-cover rounded"
-              />
-            </div>
-          </CarouselItem>
-
-          <CarouselItem className="basis-1/3">
-            <div className="relative w-full h-[300px]">
-              <Image
-                src={competition}
-                alt="Foto do campeonato"
-                fill
-                className="object-cover rounded"
-              />
-            </div>
-          </CarouselItem>
-
-          <CarouselItem className="basis-1/3">
-            <div className="relative w-full h-[300px]">
-              <Image
-                src={competition}
-                alt="Foto do campeonato"
-                fill
-                className="object-cover rounded"
-              />
-            </div>
-          </CarouselItem>
+          {team.matches?.slice(0, 5).map((match) => {
+            return (
+              <CarouselItem key={match.id} className="basis-1/3">
+                <Game match={match} />
+              </CarouselItem>
+            );
+          })}
         </CarouselContent>
         <CarouselPrevious
           variant="secondary"
