@@ -11,9 +11,9 @@ import competition from "@/assets/esl-challenger.jpg";
 
 export default function LastMatches() {
   return (
-    <div className="flex flex-col gap-8 mb-10 my-30">
+    <div className="flex flex-col gap-8 my-30">
       <div>
-        <h2 className="text-2xl font-bold">Últimas partidas</h2>
+        <h2 className="text-2xl font-bold font-title">Últimas partidas</h2>
       </div>
       <Carousel className="mx-14">
         <CarouselContent className="items-stretch min-h-[300px]">

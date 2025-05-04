@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function LiveMatch() {
   return (
     <div className="flex flex-col gap-8 mb-10">
-      <h2 className="text-2xl font-bold">Agora - Ao Vivo</h2>
+      <h2 className="text-2xl font-bold font-title">Agora - Ao Vivo</h2>
       <div className="flex items-center max-w-[900px] mx-auto gap-10">
         <Link href="/" className="relative w-[350px] h-[200px]">
           <Image
