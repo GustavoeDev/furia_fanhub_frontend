@@ -1,4 +1,5 @@
 import BannerMain from "@/components/sections/banner";
+import LastMatches from "@/components/sections/last-matches";
 import LiveMatch from "@/components/sections/live-match";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <BannerMain />
       <LiveMatch />
+      <LastMatches />
     </main>
   );
 }
