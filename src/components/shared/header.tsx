@@ -5,7 +5,9 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="flex items-center justify-between py-2">
-      <Image src={logo} alt="Furia FanHub" width={230} height={230} />
+      <Link href="/">
+        <Image src={logo} alt="Furia FanHub" width={200} height={230} />
+      </Link>
       <nav className="flex gap-7 font-semibold">
         <Link
           href="/games"

@@ -1,7 +1,9 @@
+import BannerMain from "@/components/sections/banner";
+
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-[#C49D2B]">Home</h1>
-    </div>
+    <main>
+      <BannerMain />
+    </main>
   );
 }

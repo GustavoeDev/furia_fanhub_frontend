@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${russoOne.variable} ${openSans.variable} antialiased flex flex-col min-h-screen max-w-[70rem] mx-auto`}
+        className={`${russoOne.variable} ${openSans.variable} antialiased flex flex-col min-h-screen max-w-[73rem] mx-auto px-6`}
       >
         <Header />
         {children}
