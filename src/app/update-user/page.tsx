@@ -125,7 +125,9 @@ export default function UpdateUser() {
             src={avatarUrl ? avatarUrl : user?.avatar}
             alt={user?.name_user}
           />
-          <AvatarFallback>{user?.name_user.slice(0, 2)}</AvatarFallback>
+          <AvatarFallback className="bg-zinc-700">
+            {user?.name_user.slice(0, 2)}
+          </AvatarFallback>
         </Avatar>
 
         <input

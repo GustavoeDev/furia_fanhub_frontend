@@ -1,33 +1,34 @@
 "use client";
 
-import { SignInData, signInSchema } from "@/lib/schemas/auth-schema";
-import { handleSignIn } from "@/lib/server/auth";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-
 import authBanner from "@/assets/auth-banner.png";
 import Image from "next/image";
-import Link from "next/link";
 
-export default function SignInPage() {
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignUpData, signUpSchema } from "@/lib/schemas/auth-schema";
+import { useRouter } from "next/navigation";
+import { handleSignUp } from "@/lib/server/auth";
+import { toast } from "sonner";
+
+export default function SignUpPage() {
   const router = useRouter();
 
-  const { register, handleSubmit } = useForm<SignInData>({
-    resolver: zodResolver(signInSchema),
+  const { register, handleSubmit } = useForm<SignUpData>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
+      name_user: "",
       email: "",
       password: "",
     },
   });
 
-  async function handleFormSignIn(data: SignInData) {
-    const response = await handleSignIn(data);
+  async function handleFormSignUp(data: SignUpData) {
+    const response = await handleSignUp(data);
+
+    console.log(response);
 
     if (response.error) {
-      toast.error("Erro ao fazer login", { position: "bottom-right" });
+      toast.error("Erro ao fazer cadastro", { position: "bottom-right" });
 
       return;
     }
@@ -54,10 +55,21 @@ export default function SignInPage() {
       />
 
       <form
-        onSubmit={handleSubmit(handleFormSignIn)}
+        onSubmit={handleSubmit(handleFormSignUp)}
         className="flex flex-col gap-4 max-w-[400px] w-full mx-auto"
       >
         <h1 className="font-title text-6xl mb-3">FURIA</h1>
+        <div className="flex flex-col gap-3">
+          <label htmlFor="nameUser">Usuário</label>
+          <input
+            type="text"
+            id="nameUser"
+            className="border border-zinc-400 dark:bg-zinc-900 rounded-sm p-2 text-sm"
+            placeholder="Digite seu usuário"
+            {...register("name_user")}
+          />
+        </div>
+
         <div className="flex flex-col gap-3">
           <label htmlFor="emailUser">E-mail</label>
           <input
@@ -84,14 +96,8 @@ export default function SignInPage() {
           type="submit"
           className="mt-4 bg-[#C49D2B] hover:bg-[#c49e2bc0] cursor-pointer font-semibold py-3 rounded-sm  text-white"
         >
-          Entrar
+          Cadastrar
         </button>
-        <div className="text-sm text-zinc-300 flex items-center gap-1">
-          <p className="">Não tem conta?</p>
-          <Link href="/auth/signup" className="text-[#C49D2B]">
-            Cadastre-se
-          </Link>
-        </div>
       </form>
     </div>
   );
