@@ -42,7 +42,7 @@ export const handleGetUser = async () => {
   )?.value;
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/users/me`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/accounts/me/`,
     {
       headers: {
         Authorization: `Bearer ${authCookies}`,

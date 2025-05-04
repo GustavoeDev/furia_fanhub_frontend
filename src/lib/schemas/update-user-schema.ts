@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const updateUserSchema = z
   .object({
-    name: z
+    name_user: z
       .string()
       .min(1, "Nome é obrigatório")
       .max(255, "Nome excede o limite de 255 caracteres"),

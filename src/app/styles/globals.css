@@ -126,4 +126,12 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  body:has([data-state="open"]) {
+    padding-right: 0 !important;
+  }
+}
+
+:focus {
+  outline: none;
 }
