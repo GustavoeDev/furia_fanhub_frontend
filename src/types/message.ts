@@ -13,7 +13,7 @@ export interface APIGetMessages {
   messages: Message[];
 }
 
-export interface APIcreateMessage {
+export interface APICreateMessage {
   message: Message;
 }
 

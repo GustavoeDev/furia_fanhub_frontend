@@ -11,6 +11,10 @@ export interface APIGetChats {
   chats: Chat[];
 }
 
+export interface APIGetChat {
+  chat: Chat;
+}
+
 export interface UpdateChatEvent {
   match_id: number;
   status: "pending" | "ongoing" | "completed" | "cancelled";

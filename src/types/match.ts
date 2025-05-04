@@ -7,8 +7,11 @@ export interface Team {
 export interface Competition {
   id: number;
   name: string;
+  logo_url?: string;
+  teams: Team[];
   start_date: string;
   end_date: string;
+  location: string;
 }
 
 export interface Match {
@@ -35,5 +38,13 @@ export interface Match {
 }
 
 export interface APIGetMatches {
+  matches: Match[];
+}
+
+export interface APIGetTeam {
+  id: number;
+  name: string;
+  logo: string;
+  competitions: Competition[];
   matches: Match[];
 }
