@@ -9,7 +9,8 @@ import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import competitionLogo from "@/assets/esl-challenger.jpg";
-import { Message } from "@/types/message";
+import { Message, UpdateMessageEvent } from "@/types/message";
+import { socket } from "@/lib/socket";
 
 interface MatchProps {
   matchId: string;
@@ -69,6 +70,21 @@ export default function Match({ matchId }: MatchProps) {
 
     setMessage("");
   }
+
+  useEffect(() => {
+    const handleUpdateChatMessage = (data: UpdateMessageEvent) => {
+      if (data.chat_id === chat?.id) {
+        handleGetChatMessages();
+      }
+    };
+
+    socket.on("update_chat_message", handleUpdateChatMessage);
+
+    return () => {
+      socket.off("update_chat_message", handleUpdateChatMessage);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chatMessages]);
 
   if (loading) {
     return (
