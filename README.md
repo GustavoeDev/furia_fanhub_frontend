@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FURIA FanHub Frontend
 
-## Getting Started
+Frontend da plataforma FURIA FanHub, desenvolvida para oferecer aos fãs da FURIA uma experiência imersiva durante as partidas ao vivo, com chats em tempo real e acompanhamento detalhado dos jogos.
 
-First, run the development server:
+🚀 Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Página inicial:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Seção “Agora ao vivo”: destaca os jogos que estão em andamento.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    Últimos jogos: exibe os 5 últimos jogos da FURIA.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Página dos Jogos:
 
-## Learn More
+    Filtro por campeonato: exibe os jogos da FURIA em cada campeonato.
 
-To learn more about Next.js, take a look at the following resources:
+    Paginação nos jogos gerais: lista todos os jogos da FURIA com suporte à paginação.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Filtro por data: mostra os jogos da FURIA em uma determinada data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Busca por nome do adversário: exibe jogos da FURIA contra um adversário específico.
 
-## Deploy on Vercel
+Página da Partida:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+        Banner com dados da partida: exibe informações como nome dos times, placar, mapa, tempo estimado, etc.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+        Chat ao lado do banner: permite mensagens em tempo real dos usuários.
+
+🛠️ Tecnologias Utilizadas
+
+    Next.js
+
+    TypeScript
+
+    Tailwind CSS
+
+    Socket.IO: para comunicação em tempo real.
+
+    Axios: para requisições HTTP à API backend.
+
+    Shadcn/ui: estilização de componentes.
+
+📁 Estrutura do Projeto
+
+    src/: Contém os arquivos principais do projeto.
+
+        app/: Páginas e rotas da aplicação.
+
+        assets/: Imagens estáticas.
+
+        components/: Componentes reutilizáveis da interface.
+
+        lib/: Configurações de requests, schemas, etc.
+
+        stores/: Configuração do TeamStore utilizando Zustand para guardar informações da equipe FURIA.
+
+        types/: Configuração dos types do Typescript;
+
+⚙️ Instalação
+
+Clone o repositório:
+
+    git clone https://github.com/GustavoeDev/furia_fanhub_frontend.git
+    
+    cd furia_fanhub_frontend
+
+Instale as dependências:
+
+    npm install
+
+Configure as variáveis de ambiente:
+
+Crie um arquivo .env.local na raiz do projeto e adicione as seguintes variáveis:
+
+    NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+
+Inicie o servidor de desenvolvimento:
+
+    npm run dev
+
+    A aplicação estará disponível em http://localhost:3000.
+
+🔗 Integração com o Backend
+
+Este frontend consome a API do projeto [furia_fanhub_backend](https://github.com/GustavoeDev/furia_fanhub_backend). Certifique-se de que o backend esteja em execução e acessível na URL definida na variável NEXT_PUBLIC_API_URL.
