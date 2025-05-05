@@ -57,10 +57,11 @@ export const getChatMessages = async (chat_id: number) => {
   });
 };
 
-export const createChatMessage = async (chat_id: number) => {
+export const createChatMessage = async (chat_id: number, message: string) => {
   return await api<APICreateMessage>({
     endpoint: `/chats/messages/${chat_id}/`,
     method: "POST",
+    data: { body: message },
   });
 };
 

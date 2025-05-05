@@ -1,4 +1,3 @@
-import { Chat } from "./chat";
 import { User } from "./user";
 
 export interface Message {
@@ -6,15 +5,13 @@ export interface Message {
   body: string;
   from_user: User;
   created_at: string;
-  chat: Chat;
+  chat: number;
 }
 
-export interface APIGetMessages {
-  messages: Message[];
-}
+export type APIGetMessages = Message[];
 
 export interface APICreateMessage {
-  message: Message;
+  body: string;
 }
 
 export interface UpdateMessageEvent {

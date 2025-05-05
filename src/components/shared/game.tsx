@@ -38,7 +38,7 @@ export default function Game({ match }: GameProps) {
         <p className="font-bold text-lg">
           {match.team_1.name} X {match.team_2.name}
         </p>
-        <Link href="/" className="flex items-center gap-1">
+        <Link href={`/match/${match.id}`} className="flex items-center gap-1">
           <p className="font-medium text-[#C49D2B]">Acompanhar partida</p>
           <Play size={14} className="text-[#C49D2B]" />
         </Link>

@@ -3,7 +3,7 @@ import { Match } from "./match";
 export interface Chat {
   id: number;
   created_at: string;
-  finished_at: string;
+  finished_at: string | null;
   match: Match;
 }
 
@@ -12,7 +12,10 @@ export interface APIGetChats {
 }
 
 export interface APIGetChat {
-  chat: Chat;
+  id: number;
+  created_at: string;
+  finished_at: string | null;
+  match: Match;
 }
 
 export interface UpdateChatEvent {
