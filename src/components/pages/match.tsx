@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import competitionLogo from "@/assets/esl-challenger.jpg";
 import { Message, UpdateMessageEvent } from "@/types/message";
 import { socket } from "@/lib/socket";
+import dayjs from "dayjs";
 
 interface MatchProps {
   matchId: string;
@@ -21,6 +22,14 @@ export default function Match({ matchId }: MatchProps) {
   const [chat, setChat] = useState<Chat | null>(null);
   const [chatMessages, setChatMessages] = useState<Message[] | null>([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    dayjs.locale("pt-br");
+  }, []);
+
+  const date = dayjs(chat?.match.start_time, "YYYY-MM-DD HH:mm:ss").format(
+    "DD/MM/YYYY HH:mm"
+  );
 
   useEffect(() => {
     const fetchChatData = async () => {
@@ -117,9 +126,7 @@ export default function Match({ matchId }: MatchProps) {
             {chat.match.competition?.name || "Competition"}
           </h2>
           <p className="text-lg mb-4">{chat.match.competition?.location}</p>
-          <p className="text-sm mb-4 text-[#6E6E6E]">
-            Data e Hora: {chat.match.start_time}
-          </p>
+          <p className="text-sm mb-4 text-[#6E6E6E]">Data e Hora: {date}</p>
           <div className="flex justify-between items-center mb-4 w-full">
             <div className="flex items-center">
               <Avatar className="h-14 w-14 p-1">
@@ -159,17 +166,15 @@ export default function Match({ matchId }: MatchProps) {
       <div className="w-full md:w-1/2 p-6 bg-[#121212] flex flex-col justify-between">
         <div className="flex-1 overflow-y-auto p-4 rounded-lg shadow-md">
           <div className="flex gap-4 flex-col items-end">
-            {chatMessages?.map((message) => {
-              return (
+            {chat.match.status === "ongoing" ? (
+              chatMessages?.map((message) => (
                 <div key={message.id} className="flex items-center gap-2">
                   <div className="bg-[#333333] p-2 rounded-lg max-w-xs">
                     <p className="text-sm text-white">{message.body}</p>
                   </div>
                   <Avatar className="h-8 w-8 p-1">
                     <AvatarImage
-                      src={
-                        message.from_user.avatar ? message.from_user.avatar : ""
-                      }
+                      src={message.from_user.avatar || ""}
                       alt={message.from_user.name_user}
                     />
                     <AvatarFallback className="bg-zinc-700">
@@ -177,8 +182,12 @@ export default function Match({ matchId }: MatchProps) {
                     </AvatarFallback>
                   </Avatar>
                 </div>
-              );
-            })}
+              ))
+            ) : (
+              <div className="text-white text-sm w-full mt-4 flex items-center justify-center">
+                <p>O chat ainda não está disponível.</p>
+              </div>
+            )}
           </div>
         </div>
 
